@@ -1,8 +1,5 @@
 ;; evaluator for simple expressions.
 ;; Possible starting point for first interpreter assignment.
-;;                  
-;; Claude Anderson.  Last modified April, 2014
-;; Modified by Wesley Van Pelt and Maxim Zaman.
 
 (load "chez-init.ss") 
 
