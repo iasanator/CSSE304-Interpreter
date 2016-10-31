@@ -1,19 +1,15 @@
 (define-datatype expression expression?
-  (null-exp)
-  (app-exp
-    (rator list?)
-    (rands list?))
-  (var-exp
-    (id symbol?))
-  (lit-exp
-    (val (lambda (x) #t)))
-  (lambda-exp
-    (vars (lambda (ls) (or (symbol? ls) (null? ls) ((list-of symbol?) ls))))
-    (body list?))
-  (if-exp
+  [null-exp]
+  [app-exp (rator list?)
+           (rands list?)]
+  [var-exp (id symbol?)]
+  [lit-exp (val (lambda (x) #t))]
+  [lambda-exp (vars (lambda (ls) (or (symbol? ls) (null? ls) ((list-of symbol?) ls))))
+              (body list?)]
+  [if-exp  
     (condition expression?)
     (true (lambda (ls) (or (boolean? ls) (expression? ls))))
-    (false (lambda (ls) (or (null? ls) (boolean? ls) (expression? ls) (symbol? ls) (void? ls)))))
+    (false (lambda (ls) (or (null? ls) (boolean? ls) (expression? ls) (symbol? ls) (void? ls))))]
   (oneif-exp
     (condition expression?)
     (true expression?))
@@ -68,8 +64,4 @@
    (env  environment?)]
   [case-closure
    (closures list?)])
-
-
-(define scheme-value?
-  (lambda (x) #t))
 

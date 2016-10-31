@@ -25,3 +25,14 @@
 		 (+ 1 list-index-r)
 		 #f))))))
 
+(define-datatype environment environment?
+  (empty-env-record)
+  (extended-env-record
+   (syms (list-of symbol?))
+   (vals (list-of (lambda (x) #t)))
+   (env environment?))
+  (recursively-extended-env-record
+   (proc-names (list-of symbol?))
+   (syms (list-of (list-of symbol?)))
+   (vals (list-of (list-of expression?)))
+   (env environment?)))
